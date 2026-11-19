@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Horizon — Timeline To-Do</title>
+  <link rel="icon" type="image/svg+xml" href="/assets/icon.svg"/>
+  <link rel="stylesheet" href="/css/styles.css"/>
+</head>
+<body>
+
+  <!-- Top Bar (64px) -->
+  <header class="app-header">
+    <div class="header-brand">
+      <div class="brand-icon-box">
+        <img src="/assets/icon.svg" width="30" height="30" alt="Horizon Logo"/>
+      </div>
+      <span class="brand-name">Horizon</span>
+    </div>
+
+    <!-- Center Range Segmented Control -->
+    <nav class="segmented-control" aria-label="Timeline Range">
+      <button type="button" class="is-active" data-range="fit" aria-current="page">Fit all</button>
+      <button type="button" data-range="7d">7 days</button>
+      <button type="button" data-range="30d">30 days</button>
+      <button type="button" data-range="90d">90 days</button>
+    </nav>
+
+    <!-- Right Controls -->
+    <div class="header-right">
+      <!-- Next Task Live Countdown Chip -->
+      <div class="chip-status chip-next" id="next-task-chip" style="display: none;" title="Open next milestone details">
+        <span class="legend-dot is-critical"></span>
+        <span class="chip-next-title">Next: <strong id="next-task-text">Assignment</strong></span>
+        <span id="next-task-countdown" style="opacity: 0.85;">· in 1d 7h</span>
+      </div>
+
+      <!-- Overdue Counter Chip -->
+      <div class="chip-status chip-overdue" id="overdue-chip" style="display: none;" title="Jump to overdue tasks">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+        <span id="overdue-count">1 overdue</span>
+      </div>
+
+      <!-- Theme Switcher Button -->
+      <button type="button" class="btn-icon" id="btn-theme-toggle" aria-label="Toggle light or dark theme" title="Toggle Theme (T)">
+        <span class="theme-icon" style="font-size: 16px;">🌙</span>
+      </button>
+
+      <!-- Settings Button -->
+      <button type="button" class="btn-icon" id="btn-settings-open" aria-label="Settings configuration" title="Settings">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+        </svg>
+      </button>
+
+      <!-- New Task Button -->
+      <button type="button" class="btn btn-primary" id="btn-open-new-task" title="New Task (N)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        <span>New Task</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Viewport -->
+  <main class="app-main">
+
+    <!-- HERO SECTION: The Horizontal Continuous Timeline Card -->
+    <section class="timeline-hero-card" aria-label="Interactive Proportional Timeline">
+      <!-- Header -->
+      <div class="timeline-header">
+        <div class="timeline-title-wrap">
+          <span class="timeline-title">Horizon Vector</span>
+          <span class="badge-flow">Proportional Flow</span>
+        </div>
+        <div class="timeline-legend">
+          <span class="legend-item"><span class="legend-dot is-critical"></span>Critical (&lt;24h)</span>
+          <span class="legend-item"><span class="legend-dot is-mid"></span>Mid Orbit (&lt;3d)</span>
+          <span class="legend-item"><span class="legend-dot is-target"></span>Horizon Target</span>
+        </div>
+      </div>
+
+      <!-- Main Canvas Viewport for engine -->
+      <div id="timeline-canvas-container" style="width: 100%; height: 100%; display: flex; align-items: center; position: relative;">
+        <!-- Injected by TimelineEngine -->
+      </div>
+
+      <!-- Footer Info -->
+      <div class="timeline-footer">
+        <div>Strict linear scale · Time distance exactly proportional</div>
+        <div>Drag dots horizontally to reschedule · Press <kbd style="background:var(--bg-card-subtle); padding:1px 5px; border-radius:4px; border:1px solid var(--border-color); font-family:monospace;">/</kbd> for quick add</div>
+      </div>
+    </section>
+
+    <!-- TASK LIST CARD -->
+    <section class="task-list-card" aria-label="Task Management List">
+      <!-- Tabs -->
+      <div class="list-header-tabs">
+        <div class="tabs-group">
+          <button type="button" class="tab-btn is-active" id="tab-btn-upnext">
+            <span>Up next</span>
+            <span class="tab-badge" id="tab-count-upnext">0</span>
+          </button>
+          <button type="button" class="tab-btn" id="tab-btn-done">
+            <span>Done</span>
+            <span class="tab-badge" id="tab-count-done">0</span>
+          </button>
+        </div>
+
+        <button type="button" class="btn btn-sm btn-secondary" id="btn-clear-done" style="display: none;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+          <span>Clear all done</span>
+        </button>
+      </div>
+
+      <!-- Rows Scroll Area -->
+      <div class="list-scroll-area" id="task-rows-container">
+        <!-- Injected dynamically by UIManager -->
+      </div>
+
+      <div class="list-empty-msg" id="list-empty-container" style="display: none;">
+        No pending tasks. You are all caught up!
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FLOATING NATURAL LANGUAGE QUICK ADD BAR -->
+  <div class="floating-quick-bar">
+    <!-- Live Parsing Interpretation Pill -->
+    <div class="quick-preview-chip" id="quick-add-preview">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      <span id="quick-add-preview-text">→ Fri, 20 Nov · 5:00 PM</span>
+    </div>
+
+    <!-- Capsule Bar -->
+    <div class="quick-input-capsule">
+      <span class="quick-slash-badge" title="Press / anywhere to focus">/</span>
+      <input type="text" class="quick-text-input" id="quick-add-input" placeholder="Add a task... try 'submit lab record friday 5pm' or 'buy groceries tomorrow !high'" autocomplete="off"/>
+      <button type="button" class="btn-quick-submit" id="quick-add-button" aria-label="Add Task">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- ADD / EDIT TASK MODAL -->
+  <div class="modal-overlay" id="task-modal-overlay" style="display: none;">
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modal-heading">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modal-heading">Add Task</h2>
+        <button type="button" class="btn-icon" id="btn-modal-close" aria-label="Close modal">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <form id="task-modal-form">
+        <div class="modal-body">
+          <!-- Title -->
+          <div class="form-group">
+            <label class="form-label" for="modal-task-title">
+              <span>Task title</span>
+              <span id="modal-title-count" style="font-size:11px; color:var(--text-muted);">0/120</span>
+            </label>
+            <input type="text" id="modal-task-title" class="form-input" placeholder="e.g. Prepare presentation slides" required maxlength="120" autocomplete="off"/>
+          </div>
+
+          <!-- Date & Time Inputs -->
+          <div class="date-time-grid">
+            <div class="form-group">
+              <label class="form-label" for="modal-task-date">Date</label>
+              <input type="date" id="modal-task-date" class="form-input" required/>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="modal-task-time">Time</label>
+              <input type="time" id="modal-task-time" class="form-input" value="23:59" required/>
+            </div>
+          </div>
+
+          <!-- Quick Date Chips -->
+          <div class="quick-chips-row">
+            <button type="button" class="chip-quick" data-modal-quick="today">Today</button>
+            <button type="button" class="chip-quick is-active" data-modal-quick="tomorrow">Tomorrow</button>
+            <button type="button" class="chip-quick" data-modal-quick="in3d">In 3 days</button>
+            <button type="button" class="chip-quick" data-modal-quick="nextweek">Next week</button>
+            <button type="button" class="chip-quick" data-modal-quick="nextmonth">Next month</button>
+          </div>
+
+          <!-- Priority Segmented -->
+          <div class="form-group">
+            <label class="form-label">Priority</label>
+            <div class="priority-segmented">
+              <button type="button" class="pri-segment-btn" data-modal-priority="low">Low</button>
+              <button type="button" class="pri-segment-btn is-active" data-modal-priority="medium">Medium</button>
+              <button type="button" class="pri-segment-btn" data-modal-priority="high">High</button>
+            </div>
+          </div>
+
+          <!-- Notes -->
+          <div class="form-group">
+            <label class="form-label" for="modal-task-notes">
+              <span>Notes</span>
+              <span style="font-size:11px; color:var(--text-muted);">Optional (max 500)</span>
+            </label>
+            <textarea id="modal-task-notes" class="form-textarea" placeholder="Add context, subtasks or instructions..." maxlength="500"></textarea>
+          </div>
+
+          <!-- Soft Past Time Warning -->
+          <div class="warning-soft" id="modal-past-warning" style="display: none;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+            <span>This time has passed - the task will show as overdue.</span>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn-delete-link" id="btn-modal-delete" style="display: none;">Delete</button>
+          <button type="button" class="btn btn-secondary" id="btn-modal-cancel">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="btn-modal-save">Save Task</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- DETAILS POPOVER -->
+  <div class="popover-overlay" id="details-popover-overlay" style="display: none; position: fixed; inset: 0; z-index: 64;"></div>
+  <div class="popover-card" id="task-details-popover" style="display: none;">
+    <div class="popover-arrow is-bottom" id="popover-arrow"></div>
+    <div class="popover-header">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span class="popover-countdown-chip" id="popover-countdown">in 2d 4h</span>
+        <span class="pri-pill pri-medium" id="popover-priority">MEDIUM</span>
+      </div>
+      <button type="button" class="btn-icon" id="popover-btn-close" aria-label="Close details">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <h2 class="popover-title" id="popover-title">Task Title</h2>
+    <div class="popover-meta">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      <span id="popover-datetime">Friday, 20 Nov 2026 · 6:00 PM</span>
+    </div>
+
+    <div class="popover-notes-box" id="popover-notes-block" style="display: none;">
+      <p id="popover-notes-text"></p>
+    </div>
+
+    <!-- Actions -->
+    <div class="popover-actions">
+      <div class="popover-btn-row-1">
+        <button type="button" class="btn btn-primary" id="popover-btn-complete">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>Complete</span>
+        </button>
+        <button type="button" class="btn btn-secondary" id="popover-btn-postpone" title="Postpone by 24 hours">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          <span>+1 day</span>
+        </button>
+      </div>
+
+      <div class="popover-btn-row-2">
+        <button type="button" class="btn btn-sm btn-secondary" id="popover-btn-edit">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+          <span>Edit</span>
+        </button>
+        <button type="button" class="btn btn-sm btn-secondary" id="popover-btn-ics" title="Export .ics calendar event">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+          <span>Add to calendar</span>
+        </button>
+        <button type="button" class="btn btn-sm btn-secondary" id="popover-btn-delete" style="color: var(--color-overdue);" title="Delete task">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+          <span>Delete</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CLUSTER POPOVER -->
+  <div class="cluster-popover-card" id="cluster-popover">
+    <div class="cluster-popover-header">
+      <span id="cluster-popover-title">Clustered Tasks</span>
+      <button type="button" class="btn-icon" id="cluster-popover-close">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="cluster-list" id="cluster-popover-list"></div>
+  </div>
+
+  <!-- SETTINGS DRAWER -->
+  <div class="drawer-overlay" id="settings-drawer-overlay" style="display: none;">
+    <aside class="drawer-panel" id="settings-drawer" role="dialog" aria-modal="true" aria-label="Horizon Settings">
+      <div>
+        <div class="drawer-header">
+          <div>
+            <h2 style="font-size: 18px; font-weight: 600;">Settings</h2>
+            <div style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">Horizon v1.2 · Proportional timeline</div>
+          </div>
+          <button type="button" class="btn-icon" id="btn-drawer-close" aria-label="Close settings">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+
+        <div class="drawer-body">
+          <!-- Appearance -->
+          <div class="drawer-section">
+            <span class="drawer-section-title">Appearance</span>
+            <div class="priority-segmented">
+              <button type="button" class="pri-segment-btn is-active" id="theme-opt-system">System</button>
+              <button type="button" class="pri-segment-btn" id="theme-opt-light">Light</button>
+              <button type="button" class="pri-segment-btn" id="theme-opt-dark">Dark</button>
+            </div>
+          </div>
+
+          <!-- Reminders -->
+          <div class="drawer-section">
+            <span class="drawer-section-title">Reminders &amp; Alerts</span>
+            <div class="drawer-toggle-row">
+              <div>
+                <div style="font-size: 13px; font-weight: 500;">Task Reminders</div>
+                <div id="reminders-hint-text" class="drawer-section-desc">Push before urgent milestones.</div>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="reminders-toggle-checkbox"/>
+                <span class="slider"></span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Backup & Data -->
+          <div class="drawer-section">
+            <span class="drawer-section-title">Data &amp; Backup</span>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+              <button type="button" class="btn btn-secondary" id="btn-export-backup">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                <span>Export</span>
+              </button>
+              <button type="button" class="btn btn-secondary" id="btn-import-backup">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                <span>Import</span>
+              </button>
+              <input type="file" id="import-file-input" accept=".json" style="display: none;"/>
+            </div>
+          </div>
+
+          <!-- Workspace Management -->
+          <div class="drawer-section">
+            <span class="drawer-section-title">Workspace</span>
+            <button type="button" class="btn btn-secondary" id="btn-load-demo" style="width: 100%;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+              <span>Load demo tasks</span>
+            </button>
+            <button type="button" class="btn btn-secondary" id="btn-delete-all" style="width: 100%; color: var(--color-overdue); border-color: rgba(239, 68, 68, 0.4);">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+              <span>Delete all data</span>
+            </button>
+          </div>
+
+          <!-- Shortcuts List -->
+          <div class="drawer-section">
+            <span class="drawer-section-title">Keyboard Shortcuts</span>
+            <table class="shortcuts-table">
+              <tr><td><kbd>N</kbd></td><td>New task modal</td></tr>
+              <tr><td><kbd>/</kbd></td><td>Focus quick add bar</td></tr>
+              <tr><td><kbd>Esc</kbd></td><td>Close modal or popover</td></tr>
+              <tr><td><kbd>Ctrl+Z</kbd></td><td>Undo last action</td></tr>
+              <tr><td><kbd>T</kbd></td><td>Toggle theme</td></tr>
+              <tr><td><kbd>→</kbd> / <kbd>←</kbd></td><td>Move between dots</td></tr>
+              <tr><td><kbd>Enter</kbd></td><td>Open selected dot</td></tr>
+              <tr><td><kbd>Del</kbd></td><td>Delete selected task</td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="drawer-footer">
+        <span>Horizon Spatial Architecture</span>
+        <span>Local Offline Storage</span>
+      </div>
+    </aside>
+  </div>
+
+  <!-- ROW ACTIONS CONTEXT DROPDOWN MENU -->
+  <div class="row-actions-dropdown" id="row-actions-menu">
+    <button type="button" class="row-menu-item" data-menu-action="edit">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+      <span>Edit</span>
+    </button>
+    <button type="button" class="row-menu-item" data-menu-action="postpone">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      <span>+1 day</span>
+    </button>
+    <button type="button" class="row-menu-item is-danger" data-menu-action="delete">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+      <span>Delete</span>
+    </button>
+  </div>
+
+  <!-- TOASTS CONTAINER (undo & alerts) -->
+  <div class="toast-container" id="toast-container" aria-live="polite"></div>
+
+  <!-- Application Bootstrap -->
+  <script type="module" src="/js/main.js"></script>
+</body>
+</html>

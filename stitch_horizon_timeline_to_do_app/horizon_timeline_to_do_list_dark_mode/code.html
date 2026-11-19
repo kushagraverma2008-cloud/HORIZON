@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"page-bg":"#0E1020","card-bg":"#171A2E","card-elevated":"#1F233B","card-border":"#262A45","text-main":"#ECEEFF","text-muted":"#8F95B2","indigo-accent":"#6B70FF","indigo-bright":"#7075FF","indigo-dim":"#444985","overdue-accent":"#F87171","due-24h":"#FB923C","due-3d":"#FBBF24","later-accent":"#818CF8","done-accent":"#34D399"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem","2xl":"1rem",full:"9999px"},spacing:{"space-xs":"0.25rem",margin:"1.5rem","margin-lg":"2rem","space-md":"0.75rem","space-lg":"1rem","gutter-lg":"1.5rem","space-xl":"1.5rem",gutter:"1rem","space-sm":"0.5rem","space-2xl":"2rem"},fontFamily:{"body-lg":["Inter"],"headline-lg":["Inter"],"body-md":["Inter"],"code-xs":["Inter"],"label-sm":["Inter"],"body-sm":["Inter"],"label-md":["Inter"],"headline-xl":["Inter"],"headline-md":["Inter"]},fontSize:{"body-lg":["15px",{lineHeight:"24px",letterSpacing:"-0.01em",fontWeight:"400"}],"headline-lg":["24px",{lineHeight:"32px",letterSpacing:"-0.02em",fontWeight:"600"}],"body-md":["13px",{lineHeight:"20px",letterSpacing:"-0.005em",fontWeight:"400"}],"code-xs":["11px",{lineHeight:"14px",letterSpacing:"0.02em",fontWeight:"500"}],"label-sm":["11px",{lineHeight:"14px",letterSpacing:"0.03em",fontWeight:"600"}],"body-sm":["12px",{lineHeight:"16px",letterSpacing:"0em",fontWeight:"400"}],"label-md":["13px",{lineHeight:"18px",letterSpacing:"-0.005em",fontWeight:"500"}],"headline-xl":["32px",{lineHeight:"40px",letterSpacing:"-0.025em",fontWeight:"600"}],"headline-md":["18px",{lineHeight:"26px",letterSpacing:"-0.015em",fontWeight:"600"}]}}}}</script></head><body class="bg-[#0E1020] font-body-md text-[#ECEEFF] antialiased min-h-screen"><header class="fixed top-0 left-0 right-0 w-full z-50 bg-[#0E1020]/80 backdrop-blur-xl border-b border-[#262A45]"><div class="h-16 w-full px-gutter-lg flex items-center justify-between"><div class="flex items-center gap-space-md"><div class="flex items-center justify-center w-8 h-8 rounded-lg bg-[#171A2E] border border-[#262A45] text-[#6B70FF]"><span class="material-symbols-outlined text-[20px]">wb_twilight</span></div><span class="font-headline-md text-headline-md text-[#ECEEFF]">Horizon</span></div><div class="flex items-center"><nav class="flex items-center bg-[#171A2E] p-1 rounded-full border border-[#262A45]"><a aria-current="page" class="px-space-md py-1 rounded-full transition-colors bg-[#262A45] text-[#ECEEFF] shadow-sm font-label-md text-label-md" data-path="timeline-fit-all" href="#">Fit all</a><a class="px-space-md py-1 rounded-full text-[#8F95B2] hover:text-[#ECEEFF] font-label-md text-label-md transition-colors" data-path="timeline-7-days" href="#">7 days</a><a class="px-space-md py-1 rounded-full text-[#8F95B2] hover:text-[#ECEEFF] font-label-md text-label-md transition-colors" data-path="timeline-30-days" href="#">30 days</a><a class="px-space-md py-1 rounded-full text-[#8F95B2] hover:text-[#ECEEFF] font-label-md text-label-md transition-colors" data-path="timeline-90-days" href="#">90 days</a></nav></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs text-[#8F95B2] bg-[#171A2E] border border-[#262A45] px-space-md py-1 rounded-full"><span class="w-2 h-2 rounded-full bg-[#6B70FF] shadow-[0_0_8px_rgba(107,112,255,0.7)]"></span><span class="font-label-sm text-label-sm">Synced</span></div><button class="flex items-center gap-1.5 px-space-md py-1.5 rounded-full bg-[#171A2E] border border-[#262A45] hover:bg-[#1F233B] text-[#ECEEFF] font-label-md text-label-md transition-colors" type="button"><span class="material-symbols-outlined text-[16px] text-[#8F95B2]">search</span><span class="font-code-xs text-code-xs text-[#8F95B2] px-1 rounded bg-[#262A45]">⌘K</span></button><button class="flex items-center gap-1.5 h-9 px-4 rounded-full bg-[#6B70FF] text-white font-label-md text-label-md shadow-[0_0_16px_rgba(107,112,255,0.35)] hover:bg-[#7075FF] transition-all" type="button"><span class="material-symbols-outlined text-[18px]">add</span><span>New Task</span></button><div class="w-8 h-8 rounded-full bg-[#6B70FF]/25 border border-[#6B70FF]/40 flex items-center justify-center text-[#ECEEFF]"><span class="material-symbols-outlined text-[18px]">person</span></div></div></div></header><main class="w-full pt-16 bg-[#0E1020] min-h-[calc(100vh-64px)] flex flex-col"><div class="flex flex-col w-full">
+<div class="w-full max-w-[1380px] mx-auto px-gutter-lg py-margin flex flex-col gap-space-xl">
+<!-- Secondary Meta Context Header: Sub-bar with Live Temporal Status -->
+<section class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md bg-[#171A2E] border border-[#262A45] px-space-xl py-space-md rounded-xl shadow-lg">
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#FB923C]/10 border border-[#FB923C]/20">
+<span class="w-2 h-2 rounded-full bg-[#FB923C] animate-pulse shadow-[0_0_8px_rgba(251,146,60,0.8)]"></span>
+<span class="font-label-md text-label-md text-[#ECEEFF]">Next: <span class="font-medium">Submit assignment</span></span>
+<span class="font-body-sm text-body-sm text-[#8F95B2]">· in 1d 7h</span>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#F87171]/15 border border-[#F87171]/30 text-[#F87171]">
+<span class="material-symbols-outlined text-[14px]">warning</span>
+<span class="font-label-sm text-label-sm font-medium">1 overdue</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm self-end sm:self-auto">
+<div class="flex items-center gap-1 text-[#8F95B2] font-code-xs text-code-xs bg-[#0E1020]/70 border border-[#262A45] px-2.5 py-1 rounded-full">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+<span>AUTOSYNC 12s AGO</span>
+</div>
+<button aria-label="Toggle theme brightness" class="w-8 h-8 rounded-full flex items-center justify-center text-[#8F95B2] hover:text-[#ECEEFF] hover:bg-[#262A45] transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">light_mode</span>
+</button>
+<button aria-label="Settings configuration" class="w-8 h-8 rounded-full flex items-center justify-center text-[#8F95B2] hover:text-[#ECEEFF] hover:bg-[#262A45] transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">settings</span>
+</button>
+</div>
+</section>
+<!-- SECTION: Continuous Spatial Horizontal Timeline Canvas -->
+<section class="relative w-full bg-[#171A2E] border border-[#262A45] rounded-2xl p-margin-lg shadow-xl overflow-hidden flex flex-col justify-between min-h-[380px]">
+<!-- Timeline Meta Header -->
+<div class="flex items-center justify-between z-10">
+<div class="flex items-center gap-space-sm">
+<span class="font-headline-md text-headline-md text-[#ECEEFF]">Horizon Vector</span>
+<span class="px-2.5 py-0.5 rounded-full bg-[#6B70FF]/20 border border-[#6B70FF]/30 text-[#6B70FF] font-label-sm text-label-sm">Continuous Flow</span>
+</div>
+<div class="flex items-center gap-space-lg text-[#8F95B2] font-label-sm text-label-sm">
+<span class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-[#FB923C] shadow-[0_0_6px_rgba(251,146,60,0.6)]"></span>
+            Critical Window (&lt;24h)
+          </span>
+<span class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-[#6B70FF] shadow-[0_0_6px_rgba(107,112,255,0.6)]"></span>
+            Mid Orbit (3-14d)
+          </span>
+<span class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-[#818CF8]"></span>
+            Horizon Target
+          </span>
+</div>
+</div>
+<!-- Main Visual Track with Milestones & Floating Stem Cards -->
+<div class="relative w-full my-auto py-16 px-12 select-none">
+<!-- Overdue Area Gradient Accent Behind Track -->
+<div class="absolute left-8 top-1/2 -translate-y-1/2 w-24 h-12 rounded-full bg-[#F87171]/20 blur-xl pointer-events-none"></div>
+<!-- Stem Label 1: Submit assignment (TOP, at 5%) -->
+<div class="absolute left-[5%] bottom-[calc(50%+18px)] flex flex-col items-center group cursor-pointer -translate-x-1/2 transition-transform duration-200 hover:-translate-y-1">
+<div class="bg-[#171A2E] border border-[#262A45] rounded-xl p-3 shadow-xl hover:border-[#FB923C]/50 transition-colors flex items-start gap-3 w-56">
+<div class="w-2 h-2 rounded-full bg-[#FB923C] mt-1 shrink-0 shadow-[0_0_6px_rgba(251,146,60,0.8)]"></div>
+<div class="min-w-0">
+<p class="font-label-md text-label-md text-[#ECEEFF] truncate">Submit assignment</p>
+<p class="font-body-sm text-body-sm text-[#FB923C] font-medium">Tomorrow · 11:59 PM</p>
+<div class="mt-1.5 inline-flex items-center px-1.5 py-0.5 rounded bg-[#FB923C]/15 border border-[#FB923C]/30 text-[#FB923C] font-code-xs text-code-xs">
+                Urgent Orbit
+              </div>
+</div>
+</div>
+<!-- Vertical Stem Connector -->
+<div class="w-0.5 h-8 bg-gradient-to-b from-[#262A45] to-[#FB923C]"></div>
+</div>
+<!-- Stem Label 2: Prepare presentation (BOTTOM, at 11%) -->
+<div class="absolute left-[11%] top-[calc(50%+18px)] flex flex-col items-center group cursor-pointer -translate-x-1/2 transition-transform duration-200 hover:translate-y-1">
+<!-- Vertical Stem Connector -->
+<div class="w-0.5 h-10 bg-gradient-to-b from-[#FBBF24] to-[#262A45]"></div>
+<div class="bg-[#171A2E] border border-[#262A45] rounded-xl p-3 shadow-xl hover:border-[#FBBF24]/50 transition-colors flex items-start gap-3 w-56">
+<div class="w-2 h-2 rounded-full bg-[#FBBF24] mt-1 shrink-0 shadow-[0_0_6px_rgba(251,191,36,0.8)]"></div>
+<div class="min-w-0">
+<p class="font-label-md text-label-md text-[#ECEEFF] truncate">Prepare presentation</p>
+<p class="font-body-sm text-body-sm text-[#8F95B2]">Fri 20 Nov · 6:00 PM</p>
+<div class="mt-1.5 inline-flex items-center px-1.5 py-0.5 rounded bg-[#1F233B] border border-[#262A45] text-[#8F95B2] font-code-xs text-code-xs">
+                Sync Keynote
+              </div>
+</div>
+</div>
+</div>
+<!-- Delta Chip: +2d (Between 5% and 11%) -->
+<div class="absolute left-[8%] top-[calc(50%-18px)] -translate-x-1/2 px-2 py-0.5 rounded-full bg-[#1F233B] border border-[#262A45] text-[#8F95B2] font-code-xs text-code-xs shadow-md z-20 pointer-events-none">
+          +2d
+        </div>
+<!-- Stem Label 3: Group project demo (TOP, at 47%) -->
+<div class="absolute left-[47%] bottom-[calc(50%+18px)] flex flex-col items-center group cursor-pointer -translate-x-1/2 transition-transform duration-200 hover:-translate-y-1">
+<div class="bg-[#171A2E] border border-[#262A45] rounded-xl p-3 shadow-xl hover:border-[#6B70FF]/50 transition-colors flex items-start gap-3 w-56">
+<div class="w-2 h-2 rounded-full bg-[#6B70FF] mt-1 shrink-0 shadow-[0_0_6px_rgba(107,112,255,0.8)]"></div>
+<div class="min-w-0">
+<p class="font-label-md text-label-md text-[#ECEEFF] truncate">Group project demo</p>
+<p class="font-body-sm text-body-sm text-[#8F95B2]">Mon 30 Nov · 4:00 PM</p>
+<div class="mt-1.5 inline-flex items-center px-1.5 py-0.5 rounded bg-[#6B70FF]/15 border border-[#6B70FF]/30 text-[#6B70FF] font-code-xs text-code-xs">
+                Milestone Beta
+              </div>
+</div>
+</div>
+<!-- Vertical Stem Connector -->
+<div class="w-0.5 h-12 bg-gradient-to-b from-[#262A45] to-[#6B70FF]"></div>
+</div>
+<!-- Delta Chip: +10d (Between 11% and 47%) -->
+<div class="absolute left-[29%] top-[calc(50%-18px)] -translate-x-1/2 px-2 py-0.5 rounded-full bg-[#1F233B] border border-[#262A45] text-[#8F95B2] font-code-xs text-code-xs shadow-md z-20 pointer-events-none">
+          +10d
+        </div>
+<!-- Stem Label 4: Plan trip budget (BOTTOM, at 96%) -->
+<div class="absolute left-[96%] top-[calc(50%+18px)] flex flex-col items-center group cursor-pointer -translate-x-1/2 transition-transform duration-200 hover:translate-y-1">
+<!-- Vertical Stem Connector -->
+<div class="w-0.5 h-9 bg-gradient-to-b from-[#818CF8] to-[#262A45]"></div>
+<div class="bg-[#171A2E] border border-[#262A45] rounded-xl p-3 shadow-xl hover:border-[#818CF8]/50 transition-colors flex items-start gap-3 w-52">
+<div class="w-2 h-2 rounded-full bg-[#818CF8] mt-1 shrink-0 shadow-[0_0_6px_rgba(129,140,248,0.8)]"></div>
+<div class="min-w-0">
+<p class="font-label-md text-label-md text-[#ECEEFF] truncate">Plan trip budget</p>
+<p class="font-body-sm text-body-sm text-[#8F95B2]">Tue 15 Dec · 6:00 PM</p>
+<div class="mt-1.5 inline-flex items-center px-1.5 py-0.5 rounded bg-[#1F233B] border border-[#262A45] text-[#8F95B2] font-code-xs text-code-xs">
+                Personal
+              </div>
+</div>
+</div>
+</div>
+<!-- Delta Chip: +15d (Between 47% and 96%) -->
+<div class="absolute left-[71.5%] top-[calc(50%-18px)] -translate-x-1/2 px-2 py-0.5 rounded-full bg-[#1F233B] border border-[#262A45] text-[#8F95B2] font-code-xs text-code-xs shadow-md z-20 pointer-events-none">
+          +15d
+        </div>
+<!-- THE MAIN HORIZONTAL CONTINUOUS GRADIENT BAR -->
+<div class="relative w-full h-[6px] rounded-full bg-gradient-to-r from-[#FB923C] via-[#6B70FF] to-[#A78BFA] shadow-[0_0_12px_rgba(107,112,255,0.4)]">
+<!-- Overdue Left Zone Marker -->
+<div class="absolute -left-12 -top-2 flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[#F87171]/20 border border-[#F87171]/40 text-[#F87171] font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-[#F87171] animate-ping"></span>
+<span>OVERDUE</span>
+</div>
+<!-- NOW Marker Floating Pill / Indicator -->
+<div class="absolute left-[1.5%] top-1/2 -translate-y-1/2 -translate-x-1/2 z-30 flex flex-col items-center">
+<div class="relative flex items-center justify-center">
+<div class="w-5 h-5 rounded-full bg-[#FB923C]/30 animate-pulse absolute"></div>
+<div class="w-3 h-3 rounded-full bg-[#FB923C] shadow-[0_0_10px_rgba(251,146,60,0.9)]"></div>
+</div>
+<div class="absolute top-5 whitespace-nowrap bg-[#0E1020] border border-[#262A45] text-[#ECEEFF] px-2 py-0.5 rounded-full font-code-xs text-code-xs shadow-lg">
+              NOW · 4:32 PM
+            </div>
+</div>
+<!-- Milestone Dot 1 (5%) Submit assignment / High Priority -->
+<div class="absolute left-[5%] top-1/2 -translate-y-1/2 -translate-x-1/2 z-30 cursor-pointer">
+<div class="w-5 h-5 rounded-full bg-[#FB923C] ring-4 ring-[#171A2E] shadow-[0_0_10px_rgba(251,146,60,0.7)] flex items-center justify-center transition-transform hover:scale-125">
+<div class="w-1.5 h-1.5 rounded-full bg-[#ECEEFF]"></div>
+</div>
+</div>
+<!-- Milestone Dot 2 (11%) Prepare presentation / Medium Priority -->
+<div class="absolute left-[11%] top-1/2 -translate-y-1/2 -translate-x-1/2 z-30 cursor-pointer">
+<div class="w-4 h-4 rounded-full bg-[#FBBF24] ring-3 ring-[#171A2E] shadow-[0_0_8px_rgba(251,191,36,0.6)] flex items-center justify-center transition-transform hover:scale-125">
+<div class="w-1 h-1 rounded-full bg-[#ECEEFF]"></div>
+</div>
+</div>
+<!-- Milestone Dot 3 (47%) Group project demo / Medium Priority -->
+<div class="absolute left-[47%] top-1/2 -translate-y-1/2 -translate-x-1/2 z-30 cursor-pointer">
+<div class="w-4 h-4 rounded-full bg-[#6B70FF] ring-3 ring-[#171A2E] shadow-[0_0_8px_rgba(107,112,255,0.7)] flex items-center justify-center transition-transform hover:scale-125">
+<div class="w-1 h-1 rounded-full bg-[#ECEEFF]"></div>
+</div>
+</div>
+<!-- Milestone Dot 4 (96%) Plan trip budget / Low Priority -->
+<div class="absolute left-[96%] top-1/2 -translate-y-1/2 -translate-x-1/2 z-30 cursor-pointer">
+<div class="w-3.5 h-3.5 rounded-full bg-[#818CF8] ring-3 ring-[#171A2E] shadow-[0_0_6px_rgba(129,140,248,0.6)] flex items-center justify-center transition-transform hover:scale-125">
+<div class="w-1 h-1 rounded-full bg-[#ECEEFF]"></div>
+</div>
+</div>
+</div>
+<!-- Date Graduation Axis Ticks Below Track -->
+<div class="relative w-full mt-10 flex justify-between font-label-sm text-label-sm text-[#8F95B2]">
+<div class="flex flex-col items-center">
+<span class="w-1 h-2 bg-[#262A45] rounded-full mb-1"></span>
+<span class="font-medium text-[#ECEEFF]">Today</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="w-1 h-2 bg-[#262A45] rounded-full mb-1"></span>
+<span>Mon 23</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="w-1 h-2 bg-[#262A45] rounded-full mb-1"></span>
+<span>Mon 30</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="w-1 h-2 bg-[#262A45] rounded-full mb-1"></span>
+<span>Dec 7</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="w-1 h-2 bg-[#262A45] rounded-full mb-1"></span>
+<span>Dec 14</span>
+</div>
+</div>
+</div>
+<!-- Quick Timeline Metrics / Foothold -->
+<div class="flex items-center justify-between pt-space-md border-t border-[#262A45]/40 text-[#8F95B2] font-code-xs text-code-xs">
+<div class="flex items-center gap-space-lg">
+<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[15px] text-[#6B70FF]">timelapse</span> Temporal density: 4 items / 30d</span>
+<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[15px] text-[#FB923C]">speed</span> Velocity: 82% on schedule</span>
+</div>
+<div>
+<span>Drag dots to recalibrate deadline</span>
+</div>
+</div>
+</section>
+<!-- SECTION: Task List & Orbit Prioritization Card -->
+<section class="w-full bg-[#171A2E] border border-[#262A45] rounded-2xl p-space-xl shadow-lg flex flex-col">
+<!-- Interactive Sub-tabs -->
+<div class="flex items-center justify-between pb-space-md border-b border-[#262A45] mb-space-sm">
+<div class="flex items-center gap-space-lg">
+<button class="relative pb-2.5 font-label-md text-label-md text-[#6B70FF] font-semibold flex items-center gap-2" type="button">
+<span>Up next</span>
+<span class="px-2 py-0.5 rounded-full bg-[#6B70FF]/20 text-[#6B70FF] font-code-xs text-code-xs">4</span>
+<span class="absolute bottom-0 left-0 right-0 h-[2.5px] bg-[#6B70FF] rounded-full shadow-[0_0_8px_rgba(107,112,255,0.8)]"></span>
+</button>
+<button class="pb-2.5 font-label-md text-label-md text-[#8F95B2] hover:text-[#ECEEFF] transition-colors flex items-center gap-2" type="button">
+<span>Done</span>
+<span class="px-2 py-0.5 rounded-full bg-[#262A45] text-[#8F95B2] font-code-xs text-code-xs">2</span>
+</button>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="flex items-center gap-1 text-[#8F95B2] hover:text-[#ECEEFF] font-label-sm text-label-sm px-2.5 py-1 rounded-lg hover:bg-[#262A45] transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">filter_list</span>
+<span>Filter</span>
+</button>
+<button class="flex items-center gap-1 text-[#8F95B2] hover:text-[#ECEEFF] font-label-sm text-label-sm px-2.5 py-1 rounded-lg hover:bg-[#262A45] transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">swap_vert</span>
+<span>Sort by Due</span>
+</button>
+</div>
+</div>
+<!-- High-Density Interactive Rows -->
+<div class="flex flex-col gap-1.5" id="task-rows-container">
+<!-- Row 1: Active Focus / Subtle translucent indigo tint -->
+<div class="group h-14 px-4 rounded-xl bg-[#6B70FF]/10 hover:bg-[#6B70FF]/15 border border-[#6B70FF]/25 transition-colors flex items-center justify-between cursor-pointer">
+<div class="flex items-center gap-space-md min-w-0">
+<!-- Custom Styled Checkbox -->
+<button aria-label="Mark task complete" class="w-4 h-4 rounded ring-1.5 ring-[#8F95B2]/50 hover:ring-[#6B70FF] flex items-center justify-center shrink-0 transition-all bg-[#0E1020]" type="button">
+<span class="material-symbols-outlined text-[12px] opacity-0 group-hover:opacity-60 text-[#6B70FF]">check</span>
+</button>
+<!-- Urgency Dot -->
+<span class="w-2 h-2 rounded-full bg-[#FB923C] shrink-0 shadow-[0_0_6px_rgba(251,146,60,0.8)]"></span>
+<!-- Title & Context Tag -->
+<div class="flex items-center gap-2 min-w-0">
+<span class="font-label-md text-label-md text-[#ECEEFF] font-medium truncate">Submit assignment</span>
+<span class="hidden sm:inline-block px-2 py-0.5 rounded bg-[#262A45] text-[#8F95B2] font-code-xs text-code-xs">CS-402</span>
+</div>
+</div>
+<div class="flex items-center gap-space-lg shrink-0">
+<div class="flex items-center gap-1.5 text-[#FB923C] font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[15px]">event</span>
+<span>in 1 day · Tomorrow 11:59 PM</span>
+</div>
+<span class="px-2.5 py-0.5 rounded-full bg-[#FB923C]/20 border border-[#FB923C]/35 text-[#FB923C] font-label-sm text-label-sm font-semibold">
+              High
+            </span>
+<button aria-label="More task options" class="w-7 h-7 rounded-lg flex items-center justify-center text-[#8F95B2] hover:text-[#ECEEFF] hover:bg-[#262A45] transition-colors opacity-70 group-hover:opacity-100" type="button">
+<span class="material-symbols-outlined text-[18px]">more_horiz</span>
+</button>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="group h-14 px-4 rounded-xl hover:bg-[#6B70FF]/10 border border-transparent hover:border-[#6B70FF]/20 transition-colors flex items-center justify-between cursor-pointer">
+<div class="flex items-center gap-space-md min-w-0">
+<button aria-label="Mark task complete" class="w-4 h-4 rounded ring-1.5 ring-[#8F95B2]/50 hover:ring-[#6B70FF] flex items-center justify-center shrink-0 transition-all bg-[#0E1020]" type="button">
+<span class="material-symbols-outlined text-[12px] opacity-0 group-hover:opacity-60 text-[#6B70FF]">check</span>
+</button>
+<span class="w-2 h-2 rounded-full bg-[#FBBF24] shrink-0 shadow-[0_0_6px_rgba(251,191,36,0.7)]"></span>
+<div class="flex items-center gap-2 min-w-0">
+<span class="font-label-md text-label-md text-[#ECEEFF] truncate">Prepare presentation</span>
+<span class="hidden sm:inline-block px-2 py-0.5 rounded bg-[#262A45] text-[#8F95B2] font-code-xs text-code-xs">Design Team</span>
+</div>
+</div>
+<div class="flex items-center gap-space-lg shrink-0">
+<div class="flex items-center gap-1.5 text-[#8F95B2] font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[15px]">event</span>
+<span>in 4 days · Fri 20 Nov</span>
+</div>
+<span class="px-2.5 py-0.5 rounded-full bg-[#FBBF24]/15 border border-[#FBBF24]/30 text-[#FBBF24] font-label-sm text-label-sm">
+              Medium
+            </span>
+<button aria-label="More task options" class="w-7 h-7 rounded-lg flex items-center justify-center text-[#8F95B2] hover:text-[#ECEEFF] hover:bg-[#262A45] transition-colors opacity-0 group-hover:opacity-100" type="button">
+<span class="material-symbols-outlined text-[18px]">more_horiz</span>
+</button>
+</div>
+</div>
+<!-- Row 3 -->
+<div class="group h-14 px-4 rounded-xl hover:bg-[#6B70FF]/10 border border-transparent hover:border-[#6B70FF]/20 transition-colors flex items-center justify-between cursor-pointer">
+<div class="flex items-center gap-space-md min-w-0">
+<button aria-label="Mark task complete" class="w-4 h-4 rounded ring-1.5 ring-[#8F95B2]/50 hover:ring-[#6B70FF] flex items-center justify-center shrink-0 transition-all bg-[#0E1020]" type="button">
+<span class="material-symbols-outlined text-[12px] opacity-0 group-hover:opacity-60 text-[#6B70FF]">check</span>
+</button>
+<span class="w-2 h-2 rounded-full bg-[#6B70FF] shrink-0 shadow-[0_0_6px_rgba(107,112,255,0.7)]"></span>
+<div class="flex items-center gap-2 min-w-0">
+<span class="font-label-md text-label-md text-[#ECEEFF] truncate">Group project demo</span>
+<span class="hidden sm:inline-block px-2 py-0.5 rounded bg-[#262A45] text-[#8F95B2] font-code-xs text-code-xs">Engineering</span>
+</div>
+</div>
+<div class="flex items-center gap-space-lg shrink-0">
+<div class="flex items-center gap-1.5 text-[#8F95B2] font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[15px]">event</span>
+<span>in 14 days · Mon 30 Nov</span>
+</div>
+<span class="px-2.5 py-0.5 rounded-full bg-[#6B70FF]/15 border border-[#6B70FF]/30 text-[#6B70FF] font-label-sm text-label-sm">
+              Medium
+            </span>
+<button aria-label="More task options" class="w-7 h-7 rounded-lg flex items-center justify-center text-[#8F95B2] hover:text-[#ECEEFF] hover:bg-[#262A45] transition-colors opacity-0 group-hover:opacity-100" type="button">
+<span class="material-symbols-outlined text-[18px]">more_horiz</span>
+</button>
+</div>
+</div>
+<!-- Row 4 -->
+<div class="group h-14 px-4 rounded-xl hover:bg-[#6B70FF]/10 border border-transparent hover:border-[#6B70FF]/20 transition-colors flex items-center justify-between cursor-pointer">
+<div class="flex items-center gap-space-md min-w-0">
+<button aria-label="Mark task complete" class="w-4 h-4 rounded ring-1.5 ring-[#8F95B2]/50 hover:ring-[#6B70FF] flex items-center justify-center shrink-0 transition-all bg-[#0E1020]" type="button">
+<span class="material-symbols-outlined text-[12px] opacity-0 group-hover:opacity-60 text-[#6B70FF]">check</span>
+</button>
+<span class="w-2 h-2 rounded-full bg-[#818CF8] shrink-0"></span>
+<div class="flex items-center gap-2 min-w-0">
+<span class="font-label-md text-label-md text-[#ECEEFF] truncate">Plan trip budget</span>
+<span class="hidden sm:inline-block px-2 py-0.5 rounded bg-[#262A45] text-[#8F95B2] font-code-xs text-code-xs">Leisure</span>
+</div>
+</div>
+<div class="flex items-center gap-space-lg shrink-0">
+<div class="flex items-center gap-1.5 text-[#8F95B2] font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[15px]">event</span>
+<span>in 29 days · Tue 15 Dec</span>
+</div>
+<span class="px-2.5 py-0.5 rounded-full bg-[#1F233B] border border-[#262A45] text-[#8F95B2] font-label-sm text-label-sm">
+              Low
+            </span>
+<button aria-label="More task options" class="w-7 h-7 rounded-lg flex items-center justify-center text-[#8F95B2] hover:text-[#ECEEFF] hover:bg-[#262A45] transition-colors opacity-0 group-hover:opacity-100" type="button">
+<span class="material-symbols-outlined text-[18px]">more_horiz</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION: Centered Floating Natural-Language Quick Add Bar -->
+<div class="sticky bottom-6 w-full max-w-[560px] mx-auto z-40 flex flex-col items-center">
+<!-- Natural Language Floating Interpretation Pill -->
+<div class="mb-2 px-3 py-1 rounded-full bg-[#171A2E] border border-[#262A45] text-[#6B70FF] shadow-xl flex items-center gap-2 font-label-sm text-label-sm transition-opacity" id="quick-add-preview">
+<span class="material-symbols-outlined text-[15px]">auto_fix_high</span>
+<span>Natural parse: <span class="font-semibold text-[#ECEEFF]">→ Fri, 20 Nov · 5:00 PM</span></span>
+</div>
+<!-- Quick Add Input Bar -->
+<div class="w-full bg-[#171A2E] border border-[#262A45] rounded-full p-2 pl-4 shadow-[0_12px_32px_rgba(0,0,0,0.5)] flex items-center justify-between gap-3">
+<div class="flex items-center gap-2.5 flex-1 min-w-0">
+<span class="w-5 h-5 rounded flex items-center justify-center bg-[#262A45] text-[#8F95B2] font-code-xs text-code-xs shrink-0 select-none">/</span>
+<input class="w-full bg-transparent border-0 outline-none text-[#ECEEFF] placeholder:text-[#8F95B2]/70 font-body-md text-body-md" id="quick-add-input" placeholder="Add a task... try 'submit lab record friday 5pm'" type="text"/>
+</div>
+<button aria-label="Submit task into horizon" class="w-8 h-8 rounded-full bg-[#6B70FF] text-white flex items-center justify-center hover:bg-[#7075FF] active:scale-95 transition-all shrink-0 shadow-[0_0_12px_rgba(107,112,255,0.4)]" id="quick-add-button" type="button">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Simple micro-interaction for the quick-add input & keystroke trigger
+  document.addEventListener('DOMContentLoaded', () => {
+    const input = document.getElementById('quick-add-input');
+    const preview = document.getElementById('quick-add-preview');
+    const addBtn = document.getElementById('quick-add-button');
+    const rowsContainer = document.getElementById('task-rows-container');
+
+    // Focus input when pressing '/' globally if not already focusing an input
+    window.addEventListener('keydown', (e) => {
+      if (e.key === '/' && document.activeElement !== input) {
+        e.preventDefault();
+        input.focus();
+      }
+    });
+
+    // Dynamic natural language chip reaction
+    input.addEventListener('input', (e) => {
+      const val = e.target.value.toLowerCase();
+      if (val.includes('friday') || val.includes('fri') || val.includes('tomorrow') || val.includes('nov') || val.includes('pm')) {
+        preview.style.opacity = '1';
+        preview.innerHTML = '<span class="material-symbols-outlined text-[15px]">event</span><span>Parsed deadline: <span class="font-semibold text-[#ECEEFF]">→ Identified Chrono-Tag</span></span>';
+      } else if (val.trim() === '') {
+        preview.style.opacity = '1';
+        preview.innerHTML = '<span class="material-symbols-outlined text-[15px]">auto_fix_high</span><span>Natural parse: <span class="font-semibold text-[#ECEEFF]">→ Fri, 20 Nov · 5:00 PM</span></span>';
+      } else {
+        preview.style.opacity = '0.6';
+      }
+    });
+
+    // Checkbox toggling micro-interaction
+    rowsContainer.addEventListener('click', (e) => {
+      const btn = e.target.closest('button[aria-label="Mark task complete"]');
+      if (!btn) return;
+      const checkIcon = btn.querySelector('.material-symbols-outlined');
+      const row = btn.closest('.group');
+      const textSpan = row.querySelector('.font-label-md');
+
+      if (btn.classList.contains('bg-[#34D399]')) {
+        btn.classList.remove('bg-[#34D399]', 'border-[#34D399]');
+        btn.classList.add('bg-[#0E1020]');
+        checkIcon.classList.remove('opacity-100', 'text-[#0E1020]');
+        checkIcon.classList.add('opacity-0', 'text-[#6B70FF]');
+        textSpan.classList.remove('line-through', 'text-[#8F95B2]');
+      } else {
+        btn.classList.add('bg-[#34D399]', 'border-[#34D399]');
+        btn.classList.remove('bg-[#0E1020]');
+        checkIcon.classList.add('opacity-100', 'text-[#0E1020]');
+        checkIcon.classList.remove('opacity-0', 'text-[#6B70FF]');
+        textSpan.classList.add('line-through', 'text-[#8F95B2]');
+      }
+    });
+  });
+</script></main><footer class="w-full bg-[#0E1020] border-t border-[#262A45] py-space-xl"><div class="w-full px-gutter-lg flex flex-col md:flex-row items-center justify-between gap-space-md"><div class="flex items-center gap-space-xs text-[#8F95B2] font-body-sm text-body-sm"><span>© 2025 Horizon Spatial Task Architecture. Calm velocity by design.</span></div><div class="flex items-center gap-space-lg text-[#8F95B2] font-label-sm text-label-sm"><a class="text-[#8F95B2] hover:text-[#ECEEFF] transition-colors" data-path="keyboard-shortcuts" href="#">Shortcuts</a><a class="text-[#8F95B2] hover:text-[#ECEEFF] transition-colors" data-path="system-status" href="#">Status</a><a class="text-[#8F95B2] hover:text-[#ECEEFF] transition-colors" data-path="preferences" href="#">Preferences</a></div></div></footer></body></html>

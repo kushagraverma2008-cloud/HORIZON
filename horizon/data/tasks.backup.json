@@ -1,0 +1,115 @@
+{
+  "version": 1,
+  "tasks": [
+    {
+      "id": "ca123ced-58e9-4266-96c3-c7170190fc89",
+      "title": "Submit assignment",
+      "notes": "Final assignment submission CS-402 with code repo and documentation",
+      "dueAt": "2026-11-18T12:30:00.000Z",
+      "priority": "high",
+      "done": true,
+      "doneAt": "2026-11-17T06:03:04.180Z",
+      "createdAt": "2026-11-17T05:29:52.125Z",
+      "updatedAt": "2026-11-17T06:03:04.182Z",
+      "notified": {
+        "soon": false,
+        "due": false
+      }
+    },
+    {
+      "id": "d2524f35-af39-48ee-b7c3-7b0eaa8de8fa",
+      "title": "Prepare presentation",
+      "notes": "Design team review slides 1–8 and interactive demo prototype",
+      "dueAt": "2026-11-20T12:30:00.000Z",
+      "priority": "medium",
+      "done": true,
+      "doneAt": "2026-11-17T06:03:20.044Z",
+      "createdAt": "2026-11-17T05:29:52.209Z",
+      "updatedAt": "2026-11-17T06:03:20.037Z",
+      "notified": {
+        "soon": false,
+        "due": false
+      }
+    },
+    {
+      "id": "7ef1afe4-8408-4424-b1c7-fbbb4f18dcc9",
+      "title": "Plan budget for trip",
+      "notes": "Flight, hotel reservations, and weekend itinerary checklist",
+      "dueAt": "2026-12-17T12:30:00.000Z",
+      "priority": "low",
+      "done": true,
+      "doneAt": "2026-11-17T06:03:21.420Z",
+      "createdAt": "2026-11-17T05:29:52.264Z",
+      "updatedAt": "2026-11-17T06:03:21.412Z",
+      "notified": {
+        "soon": false,
+        "due": false
+      }
+    },
+    {
+      "id": "de815dc8-9810-457a-bfc0-c04e6da86688",
+      "title": "buy milk",
+      "notes": "",
+      "dueAt": "2026-11-18T12:30:00.000Z",
+      "priority": "medium",
+      "done": true,
+      "doneAt": "2026-11-17T06:03:05.541Z",
+      "createdAt": "2026-11-17T05:30:41.512Z",
+      "updatedAt": "2026-11-17T06:03:05.536Z",
+      "notified": {
+        "soon": false,
+        "due": false
+      }
+    },
+    {
+      "id": "8de3b716-2194-4718-b9d3-1bb840ca6a4d",
+      "title": "Submit assignment",
+      "notes": "Final assignment submission CS-402 with code repo and documentation",
+      "dueAt": "2026-11-18T12:30:00.000Z",
+      "priority": "high",
+      "done": false,
+      "doneAt": null,
+      "createdAt": "2026-11-17T06:03:28.579Z",
+      "updatedAt": "2026-11-17T06:03:28.579Z",
+      "notified": {
+        "soon": false,
+        "due": false
+      }
+    },
+    {
+      "id": "46285b86-4f8b-4a30-adf8-d4d00a042f60",
+      "title": "Prepare presentation",
+      "notes": "Design team review slides 1–8 and interactive demo prototype",
+      "dueAt": "2026-11-20T12:30:00.000Z",
+      "priority": "medium",
+      "done": false,
+      "doneAt": null,
+      "createdAt": "2026-11-17T06:03:28.623Z",
+      "updatedAt": "2026-11-17T06:03:28.623Z",
+      "notified": {
+        "soon": false,
+        "due": false
+      }
+    },
+    {
+      "id": "9652d8dd-1d15-4b7d-ac9e-5ab9510616a1",
+      "title": "Plan budget for trip",
+      "notes": "Flight, hotel reservations, and weekend itinerary checklist",
+      "dueAt": "2026-12-17T12:30:00.000Z",
+      "priority": "low",
+      "done": false,
+      "doneAt": null,
+      "createdAt": "2026-11-17T06:03:28.637Z",
+      "updatedAt": "2026-11-17T06:03:28.637Z",
+      "notified": {
+        "soon": false,
+        "due": false
+      }
+    }
+  ],
+  "settings": {
+    "theme": "dark",
+    "range": "fit",
+    "reminders": false
+  }
+}
